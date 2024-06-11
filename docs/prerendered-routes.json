@@ -1,0 +1,12 @@
+{
+  "routes": [
+    "/",
+    "/dang_nhap",
+    "/du_an",
+    "/du_an/them",
+    "/nhan_vien",
+    "/nhan_vien/them",
+    "/task",
+    "/task/them"
+  ]
+}

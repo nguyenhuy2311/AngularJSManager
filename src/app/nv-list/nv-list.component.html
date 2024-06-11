@@ -1,0 +1,28 @@
+<table class="table table-bordered border border-primary">
+    <caption align="top" class="bg-warning p-1 fw-bold">
+        DANH SÁCH NHÂN VIÊN
+    </caption>
+    <tr>
+        <th class="p-2">id</th>
+        <th class="p-2">Họ tên</th>
+        <th class="p-2">Gmail</th>
+        <th class="p-2">Ngày sinh</th>
+        <th class="p-2">Giới tính</th>
+        <th class="p-2">Khu vực</th>
+        <th class="p-2">Hành động</th>
+        
+    </tr>
+
+    <tr *ngFor="let nv of list_nv">
+        <td class="p-2"> {{nv.id}}</td>
+        <td class="p-2"> {{nv.ho}} {{nv.ten}}</td>
+        <td class="p-2"> {{nv.gmail}}</td>
+        <td class="p-2"> {{nv.ngay_sinh | date: 'dd/MM/yyyy'}}</td>
+        <td class="p-2"> {{nv.phai}}</td>
+        <td class="p-2"> {{nv.khu_vuc}}</td>
+        <td class="p-2">
+            <button class="btn btn-primary me-2" (click)="editDA(nv.id)">Sửa</button>
+            <button class="btn btn-danger" (click)="deleteDA(nv.id)">Xóa</button>
+        </td>
+    </tr>
+</table>

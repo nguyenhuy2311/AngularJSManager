@@ -1,0 +1,255 @@
+<div class="container">
+  <div class="sidebar col-3">
+    <h3><b>Trưởng nhóm</b></h3>
+    <div class="avatar-container">
+      <div class="avatar">
+        <img src="assets/images/admin.jpg" alt="Admin Avatar" />
+      </div>
+    </div>
+    <h4><b>admin</b></h4>
+    <hr />
+    <h6>Tóm tắt về Team</h6>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Số lượng thành viên</th>
+          <td>{{ listNhanVien.length }}</td>
+        </tr>
+        <tr>
+          <th>Số lượng dự án</th>
+          <td>{{ listDuAn.length }}</td>
+        </tr>
+        <tr>
+          <th>Tổng chi phí các dự án</th>
+          <td>{{ getTotalProjectCost() | currency }}</td>
+        </tr>
+        <tr>
+          <th>Các Task đang xử lý</th>
+          <td>{{ getActiveTasksCount() }}</td>
+        </tr>
+      </thead>
+    </table>
+    <h6>Khách hàng</h6>
+    <table class="table2">
+      <thead>
+        <tr *ngFor="let client of getClients()">
+          <th>{{ client }}</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+  <div class="content col-6">
+    <div class="menu1">
+      <div class="left">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Dự án
+            </a>
+            <ul class="dropdown-menu">
+              <li *ngFor="let duAn of listDuAn">
+                <a class="dropdown-item" href="#">{{ duAn.ten_du_an }}</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="right">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Năm
+            </a>
+            <ul class="dropdown-menu">
+              <li *ngFor="let year of getYears()">
+                <a class="dropdown-item" href="#">{{ year }}</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="chi_tiet">
+      <div class="tieu_de1">
+        <h4>Tổng thể về dự án</h4>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Chi phí dự án</th>
+              <td>{{ getTotalProjectCost() | currency }}</td>
+            </tr>
+            <tr>
+              <th>Hiện tại đã chi</th>
+              <td>{{ data.nhan_vien_id | currency }}</td>
+            </tr>
+            <tr>
+              <th>Còn lại</th>
+              <td>{{ data.priority | currency }}</td>
+            </tr>
+          </thead>
+        </table>
+      </div>
+      <div class="tieu_de2">
+        <h4>Thành viên của nhóm</h4>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Khu vực</th>
+              <th>Số lượng thành viên</th>
+              <th>Nhân viên đang tạm nghĩ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td scope="row">Bắc</td>
+              <td>{{ getMemberCount("Bắc") }}</td>
+              <td>{{ getInactiveMemberCount("Bắc") }}</td>
+            </tr>
+            <tr>
+              <td scope="row">Trung</td>
+              <td>{{ getMemberCount("Trung") }}</td>
+              <td>{{ getInactiveMemberCount("Trung") }}</td>
+            </tr>
+            <tr>
+              <td scope="row">Nam</td>
+              <td>{{ getMemberCount("Nam") }}</td>
+              <td>{{ getInactiveMemberCount("Nam") }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="aside col-3">
+    <button
+      class="btn btn-success"
+      type="button"
+      data-bs-toggle="offcanvas"
+      data-bs-target="#offcanvasRight"
+      aria-controls="offcanvasRight"
+    >
+      Xem Thành Viên
+    </button>
+
+    <div
+      class="offcanvas offcanvas-end"
+      tabindex="-1"
+      id="offcanvasRight"
+      aria-labelledby="offcanvasRightLabel"
+    >
+      <div class="offcanvas-header">
+        <h4 class="offcanvas-title" id="offcanvasRightLabel">
+          Thành Viên Nhóm
+        </h4>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body">
+        <div class="asibe">
+          <div class="d-grid gap-2">
+            <button
+              class="btn btn-secondary"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseEast"
+              aria-expanded="false"
+              aria-controls="collapseEast"
+            >
+              East
+            </button>
+          </div>
+          <div class="collapse" id="collapseEast">
+            <div class="card card-body">
+              <ul class="list-group">
+                <li class="list-group-item active" aria-current="true">
+                  An active item
+                </li>
+                <li class="list-group-item">A second item</li>
+              </ul>
+            </div>
+          </div>
+          <div class="d-grid gap-2">
+            <button
+              class="btn btn-secondary"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseWest"
+              aria-expanded="false"
+              aria-controls="collapseWest"
+            >
+              West
+            </button>
+          </div>
+          <div class="collapse" id="collapseWest">
+            <div class="card card-body">
+              <ul class="list-group">
+                <li class="list-group-item active" aria-current="true">
+                  An active item
+                </li>
+                <li class="list-group-item">A second item</li>
+              </ul>
+            </div>
+          </div>
+          <div class="d-grid gap-2">
+            <button
+              class="btn btn-secondary"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseSouth"
+              aria-expanded="false"
+              aria-controls="collapseSouth"
+            >
+              South
+            </button>
+          </div>
+          <div class="collapse" id="collapseSouth">
+            <div class="card card-body">
+              <ul class="list-group">
+                <li class="list-group-item active" aria-current="true">
+                  An active item
+                </li>
+                <li class="list-group-item">A second item</li>
+              </ul>
+            </div>
+          </div>
+          <div class="d-grid gap-2">
+            <button
+              class="btn btn-secondary"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseNorth"
+              aria-expanded="false"
+              aria-controls="collapseNorth"
+            >
+              North
+            </button>
+          </div>
+          <div class="collapse" id="collapseNorth">
+            <div class="card card-body">
+              <ul class="list-group">
+                <li class="list-group-item active" aria-current="true"></li>
+                <li class="list-group-item">A second item</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
