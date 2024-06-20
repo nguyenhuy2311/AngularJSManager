@@ -5,7 +5,7 @@ import { DulieuService } from '../dulieu.service';
 import { ITask } from '../itask';
 import { INhanVien } from '../inhan-vien';
 import { IDuan } from '../iduan';
-import { log } from 'console';
+
 @Component({
   selector: 'app-task-them',
   standalone: true,

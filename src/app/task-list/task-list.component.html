@@ -3,13 +3,14 @@
 </div>
 <table class="table table-bordered border border-primary">
   <thead>
-    <tr class="bg-info border-subtle p-1 fw-bold">
+    <tr>
       <th class="p-2">Tên Task</th>
       <th class="p-2">Mô Tả</th>
       <th class="p-2">Priority</th>
       <th class="p-2">Status</th>
       <th class="p-2">Nhân Viên</th>
       <th class="p-2">Dự Án</th>
+      <th class="p-2">Hành Động</th>
     </tr>
   </thead>
   <tbody>
@@ -20,6 +21,12 @@
       <td class="p-2">{{ task.status }}</td>
       <td class="p-2">{{ task.nhan_vien_id }}</td>
       <td class="p-2">{{ task.du_an_id }}</td>
+      <td class="p-2">
+        <button class="btn btn-primary me-2" (click)="suaTask(task.id)">
+          Sửa
+        </button>
+        <button class="btn btn-danger" (click)="xoaTask(task.id)">Xóa</button>
+      </td>
     </tr>
   </tbody>
 </table>

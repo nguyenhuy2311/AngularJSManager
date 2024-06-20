@@ -1,52 +1,65 @@
 <form
   #frm1="ngForm"
-  (submit)="xuly(frm1.value)"
+  (ngSubmit)="xuly(frm1.value)"
   class="col-10 m-auto border border-success px-3 mt-2"
 >
   <div class="mb-3">
-    <label>
-      Tên Task
-      <input type="text" name="ten_task" ngModel class="form-control" />
-    </label>
+    <label for="ten_task" class="form-label">Tên Task</label>
+    <input
+      type="text"
+      id="ten_task"
+      name="ten_task"
+      ngModel
+      class="form-control"
+    />
   </div>
   <div class="mb-3">
-    <label>
-      Dự Án
-      <select name="du_an_id" ngModel class="form-control">
-        <option *ngFor="let da of listDuAn" value="{{ da.id }}">
-          {{ da.ten_du_an }}
-        </option>
-      </select></label
-    >
+    <label for="du_an_id" class="form-label">Dự Án</label>
+    <select id="du_an_id" name="du_an_id" ngModel class="form-control">
+      <option *ngFor="let da of listDuAn" [value]="da.id">
+        {{ da.ten_du_an }}
+      </option>
+    </select>
   </div>
   <div class="mb-3">
-    <label>
-      Nhân Viên Thực Hiện
-      <select name="nhan_vien_id" ngModel class="form-control">
-        <option *ngFor="let nv of listNhanVien" value="{{ nv.id }}">
-          {{ nv.ho }} {{ nv.ten }}
-        </option>
-      </select></label
-    >
+    <label for="nhan_vien_id" class="form-label">Nhân Viên Thực Hiện</label>
+    <select id="nhan_vien_id" name="nhan_vien_id" ngModel class="form-control">
+      <option *ngFor="let nv of listNhanVien" [value]="nv.id">
+        {{ nv.ho }} {{ nv.ten }}
+      </option>
+    </select>
   </div>
   <div class="mb-3">
-    <label for="">
-      Status <input type="number" name="status" ngModel class="form-control"
-    /></label>
+    <label for="status" class="form-label">Status</label>
+    <input
+      type="number"
+      id="status"
+      name="status"
+      ngModel
+      class="form-control"
+    />
   </div>
   <div class="mb-3">
-    <label for="">
-      Priority
-      <input type="number" name="priority" ngModel class="form-control"
-    /></label>
+    <label for="priority" class="form-label">Priority</label>
+    <input
+      type="number"
+      id="priority"
+      name="priority"
+      ngModel
+      class="form-control"
+    />
   </div>
   <div class="mb-3">
-    <label for="">
-      Mô tả
-      <textarea rows="4" name="mo_ta" ngModel class="form-control"></textarea>
-    </label>
+    <label for="mo_ta" class="form-label">Mô tả</label>
+    <textarea
+      id="mo_ta"
+      rows="4"
+      name="mo_ta"
+      ngModel
+      class="form-control"
+    ></textarea>
   </div>
   <div class="mb-3">
-    <button class="btn btn-success">Thêm task</button>
+    <button type="submit" class="btn btn-success">Thêm task</button>
   </div>
 </form>
