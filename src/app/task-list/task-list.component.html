@@ -1,18 +1,25 @@
-<h3 class="bg-warning mt-0 p-2 fs-4">DANH SÁCH TASK</h3>
-<div class="mt-2" *ngFor="let task of list_task">
-  <div class="ms-1">
-    <b>{{ task.ten_task }}</b
-    ><br />
-    {{ task.mo_ta }}
-  </div>
-  <div class="mb-0 px-3 pb-2 border-bottom border-primary d-flex">
-    <div class="col-6">
-      Priority: {{ task.priority }} <br />
-      Status: {{ task.status }}
-    </div>
-    <div class="col-6">
-      Nhân viên: {{ task.nhan_vien_id }} <br />
-      Dự án: {{ task.du_an_id }}
-    </div>
-  </div>
+<div align="top" class="bg-info-border-subtlep-1 fw-bold">
+  DANH SÁCH NHÂN VIÊN
 </div>
+<table class="table table-bordered border border-primary">
+  <thead>
+    <tr class="bg-info border-subtle p-1 fw-bold">
+      <th class="p-2">Tên Task</th>
+      <th class="p-2">Mô Tả</th>
+      <th class="p-2">Priority</th>
+      <th class="p-2">Status</th>
+      <th class="p-2">Nhân Viên</th>
+      <th class="p-2">Dự Án</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let task of list_task">
+      <td class="p-2">{{ task.ten_task }}</td>
+      <td class="p-2">{{ task.mo_ta }}</td>
+      <td class="p-2">{{ task.priority }}</td>
+      <td class="p-2">{{ task.status }}</td>
+      <td class="p-2">{{ task.nhan_vien_id }}</td>
+      <td class="p-2">{{ task.du_an_id }}</td>
+    </tr>
+  </tbody>
+</table>
