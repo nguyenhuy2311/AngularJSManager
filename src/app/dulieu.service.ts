@@ -4,6 +4,7 @@ import { IDuan } from './iduan';
 import { INhanVien } from './inhan-vien';
 import { ITask } from './itask';
 import { Observable } from 'rxjs';
+import { IUser } from './iuser';
 
 @Injectable({
   providedIn: 'root',
@@ -59,5 +60,12 @@ export class DulieuService {
   }
   xoaTask(id: number) {
     return this.h.delete(`http://localhost:3000/task/${id}`);
+  }
+  themUser(rg: IUser) {
+    return this.h.post(`http://localhost:3000/dang_ky`, rg);
+  }
+
+  loginUser(user: IUser) {
+    return this.h.post(`http://localhost:3000/dang_nhap`, user);
   }
 }

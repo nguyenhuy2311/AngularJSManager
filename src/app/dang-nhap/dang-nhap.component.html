@@ -1,21 +1,42 @@
 <div class="container">
-    <div class="wrapper">
-      <div class="title"><span>Đăng nhập</span></div>
-      <form action="#">
-        <label for="">Tài khoản</label>
-        <div class="row">
-          <i class="fas fa-user"></i>
-          <input type="text" placeholder="email" required>
-        </div>
-        <label for="">Mật khẩu</label>
-        <div class="row">
-          <i class="fas fa-lock"></i>
-          <input type="password" placeholder="Password" required>
-        </div>
-        <div class="pass"><a href="#">Quên mật khẩu?</a></div>
-        <div class="row button">
-          <input type="submit" value="Login">
-        </div>
-      </form>
-    </div>
+  <div class="wrapper">
+    <div class="title"><span>Đăng nhập</span></div>
+    <form
+      #loginForm="ngForm"
+      (ngSubmit)="loginUser(loginForm.value)"
+      class="col-10 m-auto border px-3 mt-2"
+    >
+      <div class="mb-3">
+        <label for="login_email">Email</label>
+        <input
+          type="email"
+          id="login_email"
+          name="email"
+          ngModel
+          required
+          class="form-control"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="login_mat_khau">Mật khẩu</label>
+        <input
+          type="password"
+          id="login_mat_khau"
+          name="mat_khau"
+          ngModel
+          required
+          class="form-control"
+        />
+      </div>
+      <div class="mb-3">
+        <span>
+          Chưa có tài khoản? Đăng ký
+          <a href="#" routerLink="/dang_ky">tại đây</a>
+        </span>
+      </div>
+      <div class="mb-3 text-center">
+        <button type="submit" class="btn btn-outline-success">Đăng nhập</button>
+      </div>
+    </form>
   </div>
+</div>
